@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  hhmemberin: false
+  hhmembergen: 1
+  hhmemberage: 1
+  hhmemberrel: 1
+  hhmemberuasid: 1
+  entry_id: 1
+
+two:
+  hhmemberin: false
+  hhmembergen: 1
+  hhmemberage: 1
+  hhmemberrel: 1
+  hhmemberuasid: 1
+  entry_id: 1

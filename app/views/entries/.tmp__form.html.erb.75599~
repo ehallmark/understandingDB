@@ -1,0 +1,257 @@
+<%= form_for(@entry) do |f| %>
+  <% if @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :uasid %><br>
+    <%= f.number_field :uasid %>
+  </div>
+  <div class="field">
+    <%= f.label :primary_respondent %><br>
+    <%= f.number_field :primary_respondent %>
+  </div>
+  <div class="field">
+    <%= f.label :uashhid %><br>
+    <%= f.number_field :uashhid %>
+  </div>
+  <div class="field">
+    <%= f.label :survhhid %><br>
+    <%= f.number_field :survhhid %>
+  </div>
+  <div class="field">
+    <%= f.label :uasmembers %><br>
+    <%= f.number_field :uasmembers %>
+  </div>
+  <div class="field">
+    <%= f.label :sample_type %><br>
+    <%= f.number_field :sample_type %>
+  </div>
+  <div class="field">
+    <%= f.label :batch %><br>
+    <%= f.number_field :batch %>
+  </div>
+  <div class="field">
+    <%= f.label :language %><br>
+    <%= f.number_field :language %>
+  </div>
+  <div class="field">
+    <%= f.label :start_date %><br>
+    <%= f.date_select :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :start_year %><br>
+    <%= f.number_field :start_year %>
+  </div>
+  <div class="field">
+    <%= f.label :start_month %><br>
+    <%= f.number_field :start_month %>
+  </div>
+  <div class="field">
+    <%= f.label :start_day %><br>
+    <%= f.number_field :start_day %>
+  </div>
+  <div class="field">
+    <%= f.label :start_hour %><br>
+    <%= f.number_field :start_hour %>
+  </div>
+  <div class="field">
+    <%= f.label :start_min %><br>
+    <%= f.number_field :start_min %>
+  </div>
+  <div class="field">
+    <%= f.label :start_sec %><br>
+    <%= f.number_field :start_sec %>
+  </div>
+  <div class="field">
+    <%= f.label :end_year %><br>
+    <%= f.number_field :end_year %>
+  </div>
+  <div class="field">
+    <%= f.label :end_month %><br>
+    <%= f.number_field :end_month %>
+  </div>
+  <div class="field">
+    <%= f.label :end_day %><br>
+    <%= f.number_field :end_day %>
+  </div>
+  <div class="field">
+    <%= f.label :end_hour %><br>
+    <%= f.number_field :end_hour %>
+  </div>
+  <div class="field">
+    <%= f.label :end_min %><br>
+    <%= f.number_field :end_min %>
+  </div>
+  <div class="field">
+    <%= f.label :end_sec %><br>
+    <%= f.number_field :end_sec %>
+  </div>
+  <div class="field">
+    <%= f.label :end_date %><br>
+    <%= f.date_select :end_date %>
+  </div>
+  <div class="field">
+    <%= f.label :cs_001 %><br>
+    <%= f.number_field :cs_001 %>
+  </div>
+  <div class="field">
+    <%= f.label :gender %><br>
+    <%= f.number_field :gender %>
+  </div>
+  <div class="field">
+    <%= f.label :dateofbirth_day %><br>
+    <%= f.number_field :dateofbirth_day %>
+  </div>
+  <div class="field">
+    <%= f.label :dateofbirth_month %><br>
+    <%= f.number_field :dateofbirth_month %>
+  </div>
+  <div class="field">
+    <%= f.label :dateofbirth_year %><br>
+    <%= f.number_field :dateofbirth_year %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :agerange %><br>
+    <%= f.number_field :agerange %>
+  </div>
+  <div class="field">
+    <%= f.label :citizenus %><br>
+    <%= f.check_box :citizenus %>
+  </div>
+  <div class="field">
+    <%= f.label :bornus %><br>
+    <%= f.check_box :bornus %>
+  </div>
+  <div class="field">
+    <%= f.label :stateborn %><br>
+    <%= f.number_field :stateborn %>
+  </div>
+  <div class="field">
+    <%= f.label :countryborn %><br>
+    <%= f.number_field :countryborn %>
+  </div>
+  <div class="field">
+    <%= f.label :countryborn_other %><br>
+    <%= f.text_field :countryborn_other %>
+  </div>
+  <div class="field">
+    <%= f.label :statereside %><br>
+    <%= f.number_field :statereside %>
+  </div>
+  <div class="field">
+    <%= f.label :maritalstatus %><br>
+    <%= f.number_field :maritalstatus %>
+  </div>
+  <div class="field">
+    <%= f.label :livewithpartner %><br>
+    <%= f.check_box :livewithpartner %>
+  </div>
+  <div class="field">
+    <%= f.label :education %><br>
+    <%= f.number_field :education %>
+  </div>
+  <div class="field">
+    <%= f.label :hisplatino %><br>
+    <%= f.check_box :hisplatino %>
+  </div>
+  <div class="field">
+    <%= f.label :white %><br>
+    <%= f.check_box :white %>
+  </div>
+  <div class="field">
+    <%= f.label :black %><br>
+    <%= f.check_box :black %>
+  </div>
+  <div class="field">
+    <%= f.label :nativeamer %><br>
+    <%= f.check_box :nativeamer %>
+  </div>
+  <div class="field">
+    <%= f.label :asian %><br>
+    <%= f.check_box :asian %>
+  </div>
+  <div class="field">
+    <%= f.label :pacific %><br>
+    <%= f.check_box :pacific %>
+  </div>
+  <div class="field">
+    <%= f.label :race %><br>
+    <%= f.number_field :race %>
+  </div>
+  <div class="field">
+    <%= f.label :working %><br>
+    <%= f.check_box :working %>
+  </div>
+  <div class="field">
+    <%= f.label :sick_leave %><br>
+    <%= f.check_box :sick_leave %>
+  </div>
+  <div class="field">
+    <%= f.label :unemp_layoff %><br>
+    <%= f.check_box :unemp_layoff %>
+  </div>
+  <div class="field">
+    <%= f.label :unemp_look %><br>
+    <%= f.check_box :unemp_look %>
+  </div>
+  <div class="field">
+    <%= f.label :retired %><br>
+    <%= f.check_box :retired %>
+  </div>
+  <div class="field">
+    <%= f.label :disabled %><br>
+    <%= f.check_box :disabled %>
+  </div>
+  <div class="field">
+    <%= f.label :lf_other %><br>
+    <%= f.text_field :lf_other %>
+  </div>
+  <div class="field">
+    <%= f.label :laborstatus %><br>
+    <%= f.number_field :laborstatus %>
+  </div>
+  <div class="field">
+    <%= f.label :employmenttype %><br>
+    <%= f.number_field :employmenttype %>
+  </div>
+  <div class="field">
+    <%= f.label :workfullpart %><br>
+    <%= f.number_field :workfullpart %>
+  </div>
+  <div class="field">
+    <%= f.label :hourswork %><br>
+    <%= f.number_field :hourswork %>
+  </div>
+  <div class="field">
+    <%= f.label :hhincome %><br>
+    <%= f.number_field :hhincome %>
+  </div>
+  <div class="field">
+    <%= f.label :anyhhmember %><br>
+    <%= f.check_box :anyhhmember %>
+  </div>
+  <div class="field">
+    <%= f.label :hhmembernumber %><br>
+    <%= f.number_field :hhmembernumber %>
+  </div>
+  <div class="field">
+    <%= f.label :lastmyhh_date %><br>
+    <%= f.date_select :lastmyhh_date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

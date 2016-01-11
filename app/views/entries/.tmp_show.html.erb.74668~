@@ -1,0 +1,304 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Uasid:</strong>
+  <%= @entry.uasid %>
+</p>
+
+<p>
+  <strong>Primary respondent:</strong>
+  <%= @entry.primary_respondent %>
+</p>
+
+<p>
+  <strong>Uashhid:</strong>
+  <%= @entry.uashhid %>
+</p>
+
+<p>
+  <strong>Survhhid:</strong>
+  <%= @entry.survhhid %>
+</p>
+
+<p>
+  <strong>Uasmembers:</strong>
+  <%= @entry.uasmembers %>
+</p>
+
+<p>
+  <strong>Sample type:</strong>
+  <%= @entry.sample_type %>
+</p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= @entry.batch %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @entry.language %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @entry.start_date %>
+</p>
+
+<p>
+  <strong>Start year:</strong>
+  <%= @entry.start_year %>
+</p>
+
+<p>
+  <strong>Start month:</strong>
+  <%= @entry.start_month %>
+</p>
+
+<p>
+  <strong>Start day:</strong>
+  <%= @entry.start_day %>
+</p>
+
+<p>
+  <strong>Start hour:</strong>
+  <%= @entry.start_hour %>
+</p>
+
+<p>
+  <strong>Start min:</strong>
+  <%= @entry.start_min %>
+</p>
+
+<p>
+  <strong>Start sec:</strong>
+  <%= @entry.start_sec %>
+</p>
+
+<p>
+  <strong>End year:</strong>
+  <%= @entry.end_year %>
+</p>
+
+<p>
+  <strong>End month:</strong>
+  <%= @entry.end_month %>
+</p>
+
+<p>
+  <strong>End day:</strong>
+  <%= @entry.end_day %>
+</p>
+
+<p>
+  <strong>End hour:</strong>
+  <%= @entry.end_hour %>
+</p>
+
+<p>
+  <strong>End min:</strong>
+  <%= @entry.end_min %>
+</p>
+
+<p>
+  <strong>End sec:</strong>
+  <%= @entry.end_sec %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @entry.end_date %>
+</p>
+
+<p>
+  <strong>Cs 001:</strong>
+  <%= @entry.cs_001 %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @entry.gender %>
+</p>
+
+<p>
+  <strong>Dateofbirth day:</strong>
+  <%= @entry.dateofbirth_day %>
+</p>
+
+<p>
+  <strong>Dateofbirth month:</strong>
+  <%= @entry.dateofbirth_month %>
+</p>
+
+<p>
+  <strong>Dateofbirth year:</strong>
+  <%= @entry.dateofbirth_year %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @entry.age %>
+</p>
+
+<p>
+  <strong>Agerange:</strong>
+  <%= @entry.agerange %>
+</p>
+
+<p>
+  <strong>Citizenus:</strong>
+  <%= @entry.citizenus %>
+</p>
+
+<p>
+  <strong>Bornus:</strong>
+  <%= @entry.bornus %>
+</p>
+
+<p>
+  <strong>Stateborn:</strong>
+  <%= @entry.stateborn %>
+</p>
+
+<p>
+  <strong>Countryborn:</strong>
+  <%= @entry.countryborn %>
+</p>
+
+<p>
+  <strong>Countryborn other:</strong>
+  <%= @entry.countryborn_other %>
+</p>
+
+<p>
+  <strong>Statereside:</strong>
+  <%= @entry.statereside %>
+</p>
+
+<p>
+  <strong>Maritalstatus:</strong>
+  <%= @entry.maritalstatus %>
+</p>
+
+<p>
+  <strong>Livewithpartner:</strong>
+  <%= @entry.livewithpartner %>
+</p>
+
+<p>
+  <strong>Education:</strong>
+  <%= @entry.education %>
+</p>
+
+<p>
+  <strong>Hisplatino:</strong>
+  <%= @entry.hisplatino %>
+</p>
+
+<p>
+  <strong>White:</strong>
+  <%= @entry.white %>
+</p>
+
+<p>
+  <strong>Black:</strong>
+  <%= @entry.black %>
+</p>
+
+<p>
+  <strong>Nativeamer:</strong>
+  <%= @entry.nativeamer %>
+</p>
+
+<p>
+  <strong>Asian:</strong>
+  <%= @entry.asian %>
+</p>
+
+<p>
+  <strong>Pacific:</strong>
+  <%= @entry.pacific %>
+</p>
+
+<p>
+  <strong>Race:</strong>
+  <%= @entry.race %>
+</p>
+
+<p>
+  <strong>Working:</strong>
+  <%= @entry.working %>
+</p>
+
+<p>
+  <strong>Sick leave:</strong>
+  <%= @entry.sick_leave %>
+</p>
+
+<p>
+  <strong>Unemp layoff:</strong>
+  <%= @entry.unemp_layoff %>
+</p>
+
+<p>
+  <strong>Unemp look:</strong>
+  <%= @entry.unemp_look %>
+</p>
+
+<p>
+  <strong>Retired:</strong>
+  <%= @entry.retired %>
+</p>
+
+<p>
+  <strong>Disabled:</strong>
+  <%= @entry.disabled %>
+</p>
+
+<p>
+  <strong>Lf other:</strong>
+  <%= @entry.lf_other %>
+</p>
+
+<p>
+  <strong>Laborstatus:</strong>
+  <%= @entry.laborstatus %>
+</p>
+
+<p>
+  <strong>Employmenttype:</strong>
+  <%= @entry.employmenttype %>
+</p>
+
+<p>
+  <strong>Workfullpart:</strong>
+  <%= @entry.workfullpart %>
+</p>
+
+<p>
+  <strong>Hourswork:</strong>
+  <%= @entry.hourswork %>
+</p>
+
+<p>
+  <strong>Hhincome:</strong>
+  <%= @entry.hhincome %>
+</p>
+
+<p>
+  <strong>Anyhhmember:</strong>
+  <%= @entry.anyhhmember %>
+</p>
+
+<p>
+  <strong>Hhmembernumber:</strong>
+  <%= @entry.hhmembernumber %>
+</p>
+
+<p>
+  <strong>Lastmyhh date:</strong>
+  <%= @entry.lastmyhh_date %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
