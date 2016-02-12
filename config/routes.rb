@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/random_variables/regenerate_data/:id' => "random_variables#regenerate_data", as: :random_variable_regenerate_data
   post '/random_variables/get_values_gt_or_lt_num/:id' => "random_variables#get_values_gt_or_lt_num", as: :get_values_gt_or_lt_num
   post '/random_variables/get_probability_gt_or_lt_num/:id' => "random_variables#get_probability_gt_or_lt_num", as: :get_probability_gt_or_lt_num
+  post '/random_variables/get_theoretical_probability_gt_or_lt_num/:id' => "random_variables#get_theoretical_probability_gt_or_lt_num", as: :get_theoretical_probability_gt_or_lt_num
   get '/statistics' => 'statistics#index'
   get '/import_file' => 'entries#file_upload'
   post '/import' => 'entries#import', as: :entries_import

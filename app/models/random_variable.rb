@@ -11,7 +11,7 @@ class RandomVariable < ActiveRecord::Base
   end
   
   def self.distributions
-    ["Normal", "1.5-(2X/Y)", "Chi-Squared", "T", "F", "Uniform", "Binomial", "Exponential", "Poisson"]
+    ["Normal", "1.5-(2X/Y)", "Cauchy", "Chi-Squared", "T", "F", "Uniform", "Binomial", "Exponential", "Poisson"]
   end
   
   
@@ -29,18 +29,35 @@ class RandomVariable < ActiveRecord::Base
       }
       return nums.collect{|num| num.sum/x.n_count }
     elsif self.distribution == "1.5-(2X/Y)"
-      norm = RandomVariable.new(:distribution=>"Normal",:param1=>0,:param2=>1,:n_count=>self.n_count) 
-      R.numbers = []
-      R.eval("numbers <- #{norm.get_R_distribution()}")
-      x = R.numbers
-      R.numbers = []
-      R.eval("numbers <- #{norm.get_R_distribution()}")
-      y = R.numbers
-      return 0.upto(self.n_count-1).collect{|i| 1.5+2*x[i]/y[i]}
+      norm1 = RandomVariable.new(:distribution=>"Normal",:param1=>0,:param2=>1,:n_count=>self.n_count) 
+      norm2 = RandomVariable.new(:distribution=>"Normal",:param1=>0,:param2=>1,:n_count=>self.n_count) 
+      x = norm1.random_array_of_values()
+      y = norm2.random_array_of_values()
+      return 0.upto(self.n_count-1).collect{|i| 1.5-2*x[i]/y[i]}
     else
       R.numbers = []
       R.eval("numbers <- #{self.get_R_distribution()}")
       return R.numbers
+    end
+  end
+  
+  def theoretical_probability(value,greater_than)
+    n = self.n_count
+    return 0 unless n.present? and value.present?
+    if(self.associated_variable.present?)
+      x = self.associated_variable
+      nums = 1.upto(n).collect{
+        x.theoretical_probability()
+      }
+      return nums.collect{|num| num.sum/x.n_count }
+    elsif self.distribution == "1.5-(2X/Y)"
+      cauchy = RandomVariable.new(:distribution=>"Cauchy",:param1=>0,:param2=>1,:n_count=>self.n_count) 
+      greater_than = !greater_than
+      R.eval(%Q[number = #{cauchy.get_R_probability(greater_than,0.75-value.to_f/2)}])
+      return R.number
+    else
+      R.eval("number = #{self.get_R_probability(greater_than,value)}")
+      return R.number
     end
   end
   
@@ -55,6 +72,7 @@ class RandomVariable < ActiveRecord::Base
       when "Uniform" then 2
       when "Exponential" then 1
       when "Poisson" then 1
+      when "Cauchy" then 2
       else
         return 0
     end
@@ -123,9 +141,26 @@ class RandomVariable < ActiveRecord::Base
       when "F" then "rf(#{self.n_count},df1=#{self.param1},df2=#{self.param2})"
       when "Binomial" then "rbinom(#{self.n_count},#{self.param1},#{self.param2})"
       when "Uniform" then 2
+      when "Cauchy" then "rcauchy(#{self.n_count},location=#{self.param1},scale=#{self.param2})"
       when "1.5-(2X/Y)" then 0
       when "Exponential" then 1
       when "Poisson" then "rpois(#{self.n_count},lambda=#{self.param1})"
+    end
+  end
+  
+  def get_R_probability(greater_than,value)
+    greater_than ? lower_tail = "FALSE" : lower_tail = "TRUE"
+    return case self.distribution
+      when "Normal" then "pnorm(#{value},mean=#{self.param1},sd=#{Math.sqrt(self.param2)},lower.tail=#{lower_tail})"
+      when "Chi-Squared" then "pchisq(#{value},df=#{self.param1},lower.tail=#{lower_tail})"
+      when "T" then "pt(#{value},df=#{self.param1},lower.tail=#{lower_tail})"
+      when "F" then "pf(#{value},df1=#{self.param1},df2=#{self.param2},lower.tail=#{lower_tail})"
+      when "Binomial" then "pbinom(#{value},#{self.param1},#{self.param2},lower.tail=#{lower_tail})"
+      when "Uniform" then 2
+      when "Cauchy" then "pcauchy(#{value},location=#{self.param1},scale=#{self.param2},lower.tail=#{lower_tail})"
+      when "1.5-(2X/Y)" then 0
+      when "Exponential" then 1
+      when "Poisson" then "ppois(#{value},lambda=#{self.param1},lower.tail=#{lower_tail})"
     end
   end
   

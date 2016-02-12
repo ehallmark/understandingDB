@@ -26,15 +26,18 @@ class RandomVariablesController < ApplicationController
   def get_values_gt_or_lt_num
     params[:greater_than]=="yes" ? @greater_than_or_less_than = "greater than" : @greater_than_or_less_than = "less than"
     @compared = params[:compare_value].to_f
-    @results = 0
+    results = 0
     @random_variable.values.each{|v|
       if params[:greater_than] == "yes"
-        @results+=1 if v > @compared
+        results+=1 if v > @compared
       else
-        @results+=1 if v < @compared
+        results+=1 if v < @compared
       end
     }
     @compared = @compared.to_s
+    
+    @results = "#{results} values #{@greater_than_or_less_than} #{@compared}"
+
     respond_to do |format|
       format.html { redirect_to :back }
       format.js 
@@ -44,16 +47,34 @@ class RandomVariablesController < ApplicationController
   def get_probability_gt_or_lt_num
     params[:greater_than]=="yes" ? @greater_than_or_less_than = "greater than" : @greater_than_or_less_than = "less than"
     @compared = params[:compare_value].to_f
-    @results = 0
+    results = 0
     @random_variable.values.each{|v|
       if params[:greater_than] == "yes"
-        @results+=1 if v > @compared
+        results+=1 if v > @compared
       else
-        @results+=1 if v < @compared
+        results+=1 if v < @compared
       end
     }
-    @results = @results.to_f/@random_variable.n_count
+    results = results.to_f/@random_variable.n_count
     @compared = @compared.to_s
+    
+    @results = "#{results} probability #{@greater_than_or_less_than} #{@compared}"
+    
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js 
+    end
+  end
+  
+  def get_theoretical_probability_gt_or_lt_num
+    params[:greater_than]=="yes" ? @greater_than = true : @greater_than = false
+    @greater_than ? @greater_than_or_less_than = "greater than" : @greater_than_or_less_than = "less than"
+
+
+    @compared = params[:compare_value].to_f
+    results = @random_variable.theoretical_probability(@compared,@greater_than)
+    @compared = @compared.to_s
+    @results = "#{results} probability #{@greater_than_or_less_than} #{@compared}"
     respond_to do |format|
       format.html { redirect_to :back }
       format.js 
