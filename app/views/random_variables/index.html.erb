@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Random Variables</h1>
+
+<table class="table table-bordered ">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Distribution</th>
+      <th>Param1</th>
+      <th>Param2</th>
+      <th>Param3</th>
+      <th>Param4</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @random_variables.each do |random_variable| %>
+      <tr>
+        <td><%= link_to random_variable.name, random_variable %></td>
+        <td><%= random_variable.distribution %></td>
+        <td><%= random_variable.param1 %></td>
+        <td><%= random_variable.param2 %></td>
+        <td><%= random_variable.param3 %></td>
+        <td><%= random_variable.param4 %></td>
+        <td>
+        	<div class='btn-group'>
+        		<%= link_to 'Edit', edit_random_variable_path(random_variable), class: "btn-sm btn-warning" %>
+        		<%= link_to 'Destroy', random_variable, method: :delete, class: "btn-sm btn-danger", data: { confirm: 'Are you sure?' } %>
+			</div>
+		</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Random variable', new_random_variable_path %>

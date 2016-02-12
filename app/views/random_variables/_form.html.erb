@@ -1,0 +1,60 @@
+<%= form_for(@random_variable) do |f| %>
+<div class = "row">
+	<div class="col-xs-5">
+		  <% if @random_variable.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@random_variable.errors.count, "error") %> prohibited this random_variable from being saved:</h2>
+		
+		      <ul>
+		      <% @random_variable.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		
+		  <div class="field">
+		    <%= f.label :name %><br>
+		    <%= f.text_field :name,{class: 'form-control'} %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :distribution %><br>
+			<%= f.select :distribution, RandomVariable.distributions, {include_blank: true}, :class=>"form-control" %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :associated_variable_id, "Create a Random Variable from the average of selected" %><br>
+			<%= f.collection_select :associated_variable_id, RandomVariable.where("name != '#{@random_variable.try(:name)}'").order(:name), :id, :name, {include_blank: true}, :class=>"form-control"%>
+		  </div>
+		  <div class="field">
+		    <%= f.label :n_count %><br>
+			<%= f.number_field :n_count, :class=>"form-control" %>
+		  </div>
+	</div>
+	<div class="col-xs-5 col-xs-offset-1">
+		  <div class="field">
+		    <%= f.label :param1 %><br>
+		    <%= f.number_field :param1, :step => 'any', :class=>"form-control" %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :param2 %><br>
+		    <%= f.number_field :param2,:step => 'any', :class=>"form-control" %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :param3 %><br>
+		    <%= f.number_field :param3,:step => 'any', :class=>"form-control" %>
+		  </div>
+		  <div class="field">
+		    <%= f.label :param4 %><br>
+		    <%= f.number_field :param4,:step => 'any', :class=>"form-control" %>
+		  </div>
+	</div>
+</div><br />
+<div class="row">
+	<div class="col-xs-5">
+		<div class="actions">
+		    <%= f.submit :class=>"btn btn-default" %>
+	    </div>
+	</div>
+</div>
+<% end %>
+

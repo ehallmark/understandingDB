@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160111030111) do
+ActiveRecord::Schema.define(version: 20160212021628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,22 @@ ActiveRecord::Schema.define(version: 20160111030111) do
     t.integer  "entry_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+  end
+
+  create_table "random_variables", force: :cascade do |t|
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.float    "param1"
+    t.float    "param2"
+    t.float    "param3"
+    t.float    "param4"
+    t.float    "param5"
+    t.float    "param6"
+    t.string   "distribution"
+    t.string   "name"
+    t.float    "values",                 default: [],              array: true
+    t.integer  "n_count"
+    t.integer  "associated_variable_id"
   end
 
 end

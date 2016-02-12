@@ -1,0 +1,1 @@
+$('#display_values_gt_or_lt').html("<%= [@results,"values",@greater_than_or_less_than,@compared].join(" ") %>");

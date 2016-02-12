@@ -1,0 +1,143 @@
+<div class"row">
+	<div class="col-xs-12">
+		<h2>EHSE</h2>
+		<h3>(Evan Hallmark's Statistics Environment)</h3>
+	</div>
+</div> <br />
+<p id="notice"><%= notice %></p>
+<div class = "row">
+
+	<div class="col-xs-6">
+		<%= image_tag "most_recent_plot.png" %>
+		<br />
+		<br />
+		<br />
+		<p>
+		  <strong>Name:</strong>
+		  <%= @random_variable.name %>
+		</p>
+		
+		<p>
+		  <strong>Distribution:</strong>
+		  <%= @random_variable.distribution %>
+		</p>
+		
+		<strong>N:</strong>
+		  <%= @random_variable.n_count %>
+		</p>
+		<p>
+		<strong>Sample Mean (Computed):</strong>
+		  <%= @random_variable.sample_mean %>
+		</p>
+		
+		<p><strong>Sample Median (Computed):</strong>
+		  <%= @random_variable.sample_median %>
+		</p>
+		
+		<p><strong>Sample Mode (Computed):</strong>
+		  <%= @random_variable.sample_mode %>
+		</p>
+		
+		<p><strong>Sample Variance (Computed):</strong>
+		  <%= @random_variable.sample_variance %>
+		</p>
+	</div>
+	<div class = "col-xs-4">
+		<%= link_to 'Edit', edit_random_variable_path(@random_variable), class: "btn btn-warning" %> 
+		<%= link_to 'Back', random_variables_path, class: "btn btn-default" %><br /><br /><br />
+	  <%= form_tag random_variable_path(@random_variable.id), method: :get do |f| %>
+	      <% if @random_variable.errors.any? %>
+		    <div id="error_explanation">
+		      <h2><%= pluralize(@random_variable.errors.count, "error") %> prohibited this random_variable from being saved:</h2>
+		
+		      <ul>
+		      <% @random_variable.errors.full_messages.each do |message| %>
+		        <li><%= message %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+		  <% end %>
+		  <div class="field">
+		    <%= label_tag "Min" %><br>
+		    <%= text_field_tag :plot_min, params[:plot_min], class: "form-control" %>
+		  </div>
+		  <div class="field">
+		    <%= label_tag "Max" %><br>
+		    <%= text_field_tag :plot_max, params[:plot_max], class: "form-control" %>
+		  </div>
+		  <div class="field">
+		    <%= label_tag "Scale" %><br>
+		    <%= text_field_tag :scale, params[:scale], class: "form-control" %>
+		  </div><br />
+		   <div class="field">
+		   	<b>Y Axis:</b><br />
+		  	 <%= label_tag "Frequency" %>
+			 <%= radio_button_tag(:frequency, "yes", checked: params[:frequency]=="yes") %>
+		  	 <%= label_tag "Density" %>
+			 <%= radio_button_tag(:frequency, "no", checked: params[:frequency]!="yes") %> <br />
+		  </div>
+		  <%= submit_tag "Change", class: "btn btn-md btn-default" %>
+	  <% end %>
+	  <br />
+	  <br />
+	  <%= link_to "Regenerate Data", random_variable_regenerate_data_path, class: "btn btn-default" %>
+	  <br />
+	  <br />
+	  <p><b>Number of Values: </b></p>
+	  <%= form_tag get_values_gt_or_lt_num_path(@random_variable.id), remote: true do |f| %>
+	  	 <%= label_tag "Greater than" %>
+		 <%= radio_button_tag(:greater_than, "yes", checked: params[:greater_than]!="no") %>
+	  	 <%= label_tag "Less than" %>
+		 <%= radio_button_tag(:greater_than, "no", checked: params[:greater_than]=="no") %> <br />
+		 <%= label_tag "Value" %><br>
+		 <%= text_field_tag :compare_value, params[:compare_value], class: "form-control" %>
+		 <%= submit_tag "Calculate", class: "btn btn-md btn-default" %>
+	  <% end %>
+	  <br />
+	  <div id="display_values_gt_or_lt">
+	  	
+	  </div>
+	  <br />
+	  <br />
+	  <p><b>Discrete Probability: </b></p>
+	  <%= form_tag get_probability_gt_or_lt_num_path(@random_variable.id), remote: true do |f| %>
+	  	 <%= label_tag "Greater than" %>
+		 <%= radio_button_tag(:greater_than, "yes", checked: params[:greater_than]!="no") %>
+	  	 <%= label_tag "Less than" %>
+		 <%= radio_button_tag(:greater_than, "no", checked: params[:greater_than]=="no") %> <br />
+		 <%= label_tag "Value" %><br>
+		 <%= text_field_tag :compare_value, params[:compare_value], class: "form-control" %>
+		 <%= submit_tag "Calculate", class: "btn btn-md btn-default" %>
+	  <% end %>
+	  <br />
+	  <div id="display_probability_gt_or_lt">
+	  	
+	  </div>
+	</div>
+   </div>
+<br />
+<div class="row">
+	<div class="col-xs-12">
+		<p>
+		  <strong>Param1:</strong>
+		  <%= @random_variable.param1 %>
+		</p>
+		
+		<p>
+		  <strong>Param2:</strong>
+		  <%= @random_variable.param2 %>
+		</p>
+		
+		<p>
+		  <strong>Param3:</strong>
+		  <%= @random_variable.param3 %>
+		</p>
+		
+		<p>
+		  <strong>Param4:</strong>
+		  <%= @random_variable.param4 %>
+		</p>
+		
+
+	</div>
+</div>

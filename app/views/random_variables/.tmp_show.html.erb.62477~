@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_tag plot_random_variables_path do %>
+	<%= label_tag "Generate Plot with N points" %>
+	<%= text_field_tag :n %>
+	<%= submit_tag "Plot" %>
+<% end %>
+
+<%= image_tag 'most_recent_plot.png' %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @random_variable.name %>
+</p>
+
+<p>
+  <strong>Distribution:</strong>
+  <%= @random_variable.distribution %>
+</p>
+
+<p>
+  <strong>Param1:</strong>
+  <%= @random_variable.param1 %>
+</p>
+
+<p>
+  <strong>Param2:</strong>
+  <%= @random_variable.param2 %>
+</p>
+
+<p>
+  <strong>Param3:</strong>
+  <%= @random_variable.param3 %>
+</p>
+
+<p>
+  <strong>Param4:</strong>
+  <%= @random_variable.param4 %>
+</p>
+
+<%= link_to 'Edit', edit_random_variable_path(@random_variable) %> |
+<%= link_to 'Back', random_variables_path %>

@@ -1,0 +1,41 @@
+<%= form_for(@random_variable) do |f| %>
+  <% if @random_variable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@random_variable.errors.count, "error") %> prohibited this random_variable from being saved:</h2>
+
+      <ul>
+      <% @random_variable.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name,{class: 'form-control'} %>
+  </div>
+  <div class="field">
+    <%= f.label :distribution %><br>
+	<%= f.select :distribution, RandomVariable.distributions, {include_blank: true} %>
+  </div>
+  <div class="field">
+    <%= f.label :param1 %><br>
+    <%= f.number_field :param1 %>
+  </div>
+  <div class="field">
+    <%= f.label :param2 %><br>
+    <%= f.number_field :param2 %>
+  </div>
+  <div class="field">
+    <%= f.label :param3 %><br>
+    <%= f.number_field :param3 %>
+  </div>
+  <div class="field">
+    <%= f.label :param4 %><br>
+    <%= f.number_field :param4 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

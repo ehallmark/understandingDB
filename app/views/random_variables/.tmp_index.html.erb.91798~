@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Random Variables</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Distribution</th>
+      <th>Param1</th>
+      <th>Param2</th>
+      <th>Param3</th>
+      <th>Param4</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @random_variables.each do |random_variable| %>
+      <tr>
+        <td><%= random_variable.name %></td>
+        <td><%= random_variable.distribution %></td>
+        <td><%= random_variable.param1 %></td>
+        <td><%= random_variable.param2 %></td>
+        <td><%= random_variable.param3 %></td>
+        <td><%= random_variable.param4 %></td>
+        <td><%= link_to 'Show', random_variable %></td>
+        <td><%= link_to 'Edit', edit_random_variable_path(random_variable) %></td>
+        <td><%= link_to 'Destroy', random_variable, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Random variable', new_random_variable_path %>
